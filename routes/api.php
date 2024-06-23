@@ -34,7 +34,7 @@ Route::middleware('auth:api')->group(function () {
             // Функционал администратора
 Route::middleware('auth:api', 'role:admin')->group(function () {
             //CRUD PRODUCTS
-   //Создание товара
+    //Создание товара
     Route::post('/product/create', [ProductController::class, 'create']);
     //Редактирование товара
     Route::post('/product/{id}/update', [ProductController::class, 'update']);
@@ -47,7 +47,6 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
     Route::post('/category/{id}/update' , [AdminController::class, 'updateCategory']);
     //Удаление категории
     Route::delete('/category/{id}/delete', [AdminController::class, 'deleteCategory']);
-
 
     //Просмотр всех пользователей
     Route::get('/users',[AdminController::class, 'getUsers']);

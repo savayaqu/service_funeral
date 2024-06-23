@@ -11,10 +11,7 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-    public function index() {
-        $reviews = Review::all();
-        return response()->json(['data' => $reviews])->setStatusCode(200);
-    }
+
     public function show(int $id) {
         $reviews = Review::where('product_id', $id)->get();
         if ($reviews->isEmpty()) {
