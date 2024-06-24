@@ -1,0 +1,2948 @@
+{
+	"info": {
+		"_postman_id": "d95b4a28-900a-4ba2-9a4c-8096f406a50f",
+		"name": "service_funeral",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32893660"
+	},
+	"item": [
+		{
+			"name": "Autotests",
+			"item": [
+				{
+					"name": "Регистрация",
+					"item": [
+						{
+							"name": "201",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(201); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(1000); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Регистрация прошла успешно\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{host}}/register?name=name&surname=name&login=name1&password=Name1!3&email=name@mail.ru&telephone=344444",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"register"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "name"
+										},
+										{
+											"key": "surname",
+											"value": "name"
+										},
+										{
+											"key": "login",
+											"value": "name1"
+										},
+										{
+											"key": "password",
+											"value": "Name1!3"
+										},
+										{
+											"key": "email",
+											"value": "name@mail.ru"
+										},
+										{
+											"key": "telephone",
+											"value": "344444"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "422",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(422); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{host}}/register?name=name&surname=name&login=name1&password=Name1!3&email=name@mail.ru&telephone=344444",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"register"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "name"
+										},
+										{
+											"key": "surname",
+											"value": "name"
+										},
+										{
+											"key": "login",
+											"value": "name1"
+										},
+										{
+											"key": "password",
+											"value": "Name1!3"
+										},
+										{
+											"key": "email",
+											"value": "name@mail.ru"
+										},
+										{
+											"key": "telephone",
+											"value": "344444"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Авторизация",
+					"item": [
+						{
+							"name": "200",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(200); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(1000); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'api_token'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"api_token\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/login?login=user1&password=user1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"login"
+									],
+									"query": [
+										{
+											"key": "login",
+											"value": "user1"
+										},
+										{
+											"key": "password",
+											"value": "user1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "401",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(401); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Ошибка авторизации\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/login?login=user1sssssssssss&password=user1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"login"
+									],
+									"query": [
+										{
+											"key": "login",
+											"value": "user1sssssssssss"
+										},
+										{
+											"key": "password",
+											"value": "user1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "422",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(422); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/login?login=&password=",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"login"
+									],
+									"query": [
+										{
+											"key": "login",
+											"value": ""
+										},
+										{
+											"key": "password",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Просмотр товаров",
+					"item": [
+						{
+							"name": "200",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'data'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"data\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/products",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(404); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Товары не найдены\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/products",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Просмотр отзывов к товару",
+					"item": [
+						{
+							"name": "200",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'data'\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.have.property(\"data\");\r",
+											"    pm.expect(jsonData.data).to.be.an(\"array\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия необходимых полей в объектах массива 'data'\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    jsonData.data.forEach(item => {\r",
+											"        pm.expect(item).to.have.property(\"id\");\r",
+											"        pm.expect(item).to.have.property(\"rating\");\r",
+											"        pm.expect(item).to.have.property(\"description\");\r",
+											"        pm.expect(item).to.have.property(\"user_name\");\r",
+											"        pm.expect(item).to.have.property(\"product_id\");\r",
+											"    });\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/product/22/reviews",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"22",
+										"reviews"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(404); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Отзывы к данному товары отсутствуют\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/product/1/reviews",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"1",
+										"reviews"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Выход",
+					"item": [
+						{
+							"name": "204",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(204); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"pm.test(\"Проверка, что ответ пустой\", function () {\r",
+											"    const responseBody = pm.response.text();\r",
+											"    pm.expect(responseBody).to.be.empty;\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "user2",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/logout",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "401",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(401); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Ошибка авторизации\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "user2",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/logout",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Просмотр своего профиля",
+					"item": [
+						{
+							"name": "200",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'data'\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.have.property(\"data\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия всех необходимых полей в объекте 'data'\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    const data = jsonData.data;\r",
+											"    pm.expect(data).to.have.property(\"id\");\r",
+											"    pm.expect(data).to.have.property(\"name\");\r",
+											"    pm.expect(data).to.have.property(\"surname\");\r",
+											"    pm.expect(data).to.have.property(\"patronymic\");\r",
+											"    pm.expect(data).to.have.property(\"login\");\r",
+											"    pm.expect(data).to.have.property(\"password\");\r",
+											"    pm.expect(data).to.have.property(\"email\");\r",
+											"    pm.expect(data).to.have.property(\"telephone\");\r",
+											"    pm.expect(data).to.have.property(\"api_token\");\r",
+											"    pm.expect(data).to.have.property(\"role_id\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "savayaqu",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/profile",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "401",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(401); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Ошибка авторизации\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "user2",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/profile",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"profile"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Создание отзыва для купленного товара",
+					"item": [
+						{
+							"name": "401",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(401); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Ошибка авторизации\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "user2",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "rating",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "sdfsdfsdfsdfsf",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/product/1/review/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"1",
+										"review",
+										"create"
+									],
+									"query": [
+										{
+											"key": "rating",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "description",
+											"value": "fgfgfgfg",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "423",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(423); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Вы уже оставили отзыв на данный товар\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ivan",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "rating",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "sdfsdfsdfsdfsf",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/product/5/review/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"5",
+										"review",
+										"create"
+									],
+									"query": [
+										{
+											"key": "rating",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "description",
+											"value": "fgfgfgfg",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "201",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(201); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Отзыв успешно сохранен\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ivan",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "rating",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Товар отличный",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/product/7/review/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"7",
+										"review",
+										"create"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "name",
+											"disabled": true
+										},
+										{
+											"key": "surname",
+											"value": "name",
+											"disabled": true
+										},
+										{
+											"key": "login",
+											"value": "name1",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "Name1!3",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "name@mail.ru",
+											"disabled": true
+										},
+										{
+											"key": "telephone",
+											"value": "344444",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(404); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Вы не можете оставить отзыв на товар, который вы не покупали\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ivan",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "rating",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Товар отличный",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/product/20/review/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"20",
+										"review",
+										"create"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "name",
+											"disabled": true
+										},
+										{
+											"key": "surname",
+											"value": "name",
+											"disabled": true
+										},
+										{
+											"key": "login",
+											"value": "name1",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "Name1!3",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "name@mail.ru",
+											"disabled": true
+										},
+										{
+											"key": "telephone",
+											"value": "344444",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "422",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(422); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка наличия поля 'rating' в сообщении об ошибке\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.have.property(\"rating\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ivan",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "rating",
+											"value": "8",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Товар отличный",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/product/7/review/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"7",
+										"review",
+										"create"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "name",
+											"disabled": true
+										},
+										{
+											"key": "surname",
+											"value": "name",
+											"disabled": true
+										},
+										{
+											"key": "login",
+											"value": "name1",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "Name1!3",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "name@mail.ru",
+											"disabled": true
+										},
+										{
+											"key": "telephone",
+											"value": "344444",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Создание категории",
+					"item": [
+						{
+							"name": "401",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(401); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Ошибка авторизации\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/category/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"category",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "201",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(201); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Категория успешно сохранена\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "savayaqu",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "newCat",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/category/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"category",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "403",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(403); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Доступ запрещён\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ivan",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/category/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"category",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "422",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(422); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "savayaqu",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "price",
+											"value": "HAHA",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/category/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"category",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Создание товара",
+					"item": [
+						{
+							"name": "401",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(401); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Ошибка авторизации\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/product/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "201",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(201); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Товар создан\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "savayaqu",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Новок",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "123.12",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Это новок",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "23",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/product/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "403",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(403); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Доступ запрещён\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ivan",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/product/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "422",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(422); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "savayaqu",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "price",
+											"value": "HAHA",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/product/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Редактирование категории",
+					"item": [
+						{
+							"name": "401",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(401); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Ошибка авторизации\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/category/80/update",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"category",
+										"80",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "422",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(422); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "savayaqu",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "price",
+											"value": "HAHA",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/category/1/update?name=3333333333333333333333333333333333333333333333333333333333333333333",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"category",
+										"1",
+										"update"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "3333333333333333333333333333333333333333333333333333333333333333333"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "403",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(403); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Доступ запрещён\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ivan",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/category/80/update",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"category",
+										"80",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(404); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Категория не найдена\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "savayaqu",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/category/80/update",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"category",
+										"80",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "200",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(200); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Категория обновлена\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "savayaqu",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/category/1/update",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"category",
+										"1",
+										"update"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Редактирование товара",
+					"item": [
+						{
+							"name": "401",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(401); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Ошибка авторизации\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/product/80/update",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"80",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "422",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(422); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "savayaqu",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "price",
+											"value": "HAHA",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/product/23/update",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"23",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "403",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(403); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Доступ запрещён\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ivan",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/product/80/update",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"80",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(404); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Товар не найден\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "savayaqu",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/product/80/update",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"80",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "200",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(200); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Товар обновлён\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "savayaqu",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/product/23/update",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"23",
+										"update"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Удаление категории",
+					"item": [
+						{
+							"name": "401",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(401); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Ошибка авторизации\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/category/80/delete",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"category",
+										"80",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "403",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(403); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Доступ запрещён\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ivan",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/category/80/delete",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"category",
+										"80",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(404); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Категория не найдена\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "savayaqu",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/category/80/delete",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"category",
+										"80",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "200",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(200); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Категория удалена\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "savayaqu",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/category/7/delete",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"category",
+										"7",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Удаление товара",
+					"item": [
+						{
+							"name": "404",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(404); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Товар не найден\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "savayaqu",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/product/80/delete",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"80",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "401",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(401); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Ошибка авторизации\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/product/80/delete",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"80",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "403",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(403); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Доступ запрещён\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ivan",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/product/80/delete",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"80",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "200",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(200); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Товар удалён\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "savayaqu",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/product/24/delete",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"24",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Просмотр всех пользователей",
+					"item": [
+						{
+							"name": "200",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'data'\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.have.property(\"data\");\r",
+											"    pm.expect(jsonData.data).to.be.an(\"array\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия всех необходимых полей в каждом объекте массива 'data'\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    jsonData.data.forEach(item => {\r",
+											"        pm.expect(item).to.have.property(\"id\");\r",
+											"        pm.expect(item).to.have.property(\"name\");\r",
+											"        pm.expect(item).to.have.property(\"surname\");\r",
+											"        pm.expect(item).to.have.property(\"patronymic\");\r",
+											"        pm.expect(item).to.have.property(\"login\");\r",
+											"        pm.expect(item).to.have.property(\"password\");\r",
+											"        pm.expect(item).to.have.property(\"email\");\r",
+											"        pm.expect(item).to.have.property(\"telephone\");\r",
+											"        pm.expect(item).to.have.property(\"api_token\");\r",
+											"        pm.expect(item).to.have.property(\"role_id\");\r",
+											"    });\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "savayaqu",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/users",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "401",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(401); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Ошибка авторизации\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/users",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "403",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Проверка кода ответа\", function () {\r",
+											"    pm.response.to.have.status(403); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка времени ответа\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"pm.test(\"Проверка значения ключа 'message'\", function () {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"Доступ запрещён\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ivan",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/users",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://zaikin-va.tepk-it.ru/api",
+			"type": "string"
+		}
+	]
+}

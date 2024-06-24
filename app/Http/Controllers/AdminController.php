@@ -47,19 +47,19 @@ class AdminController extends Controller
     {
         $category = Category::where('id', $categoryId)->first();
         if(!$category) {
-            throw new ApiException(404, 'Не найдено');
+            throw new ApiException(404, 'Категория не найдена');
         }
         $category->fill($request->all());
         $category->save();
-        return response()->json(['message' => 'Категория ' .$categoryId. ' обновлена'])->setStatusCode(200);
+        return response()->json(['message' => 'Категория обновлена'])->setStatusCode(200);
     }
     public function deleteCategory(int $categoryId)
     {
         $category = Category::where('id', $categoryId)->first();
         if(!$category) {
-            throw new ApiException(404, 'Не найдено');
+            throw new ApiException(404, 'Категория не найдена');
         }
         $category->delete();
-        return response()->json(['message' => 'Категория ' .$categoryId. ' удалён'])->setStatusCode(200);
+        return response()->json(['message' => 'Категория удалена'])->setStatusCode(200);
     }
 }

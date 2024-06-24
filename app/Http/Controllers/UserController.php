@@ -24,12 +24,12 @@ class UserController extends Controller
         $user->role_id = $role->id;
         $user->password = Hash::make($request->input('password'));
         $user->save();
-        return response()->json()->setStatusCode(201);
+        return response()->json(['message' => 'Регистрация прошла успешно'])->setStatusCode(201);
     }
     //Метод просмотра текущего профиля
     public function this()
     {
-        $user=auth()->user()->load('shifts');
+        $user=auth()->user();
         return response()->json(['data'=>$user])->setStatusCode(200);
     }
 }

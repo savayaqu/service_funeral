@@ -21,29 +21,29 @@ class  ProductController extends Controller
         if ($request->hasFile('path')) {
             Product::createPhoto($request->file('path'), $product->id);
         }
-        return response()->json(['message' => 'Товар создан', 'dataProduct' => $product])->setStatusCode(201);
+        return response()->json(['message' => 'Товар создан'])->setStatusCode(201);
     }
     //Редактирование товара
     public function update(UpdateProductRequest $request, int $productId) {
         $product = Product::where('id', $productId)->first();
         if(!$product) {
-            throw new ApiException(404, 'Не найдено');
+            throw new ApiException(404, 'Товар не найден');
         }
         $product->fill($request->except('path'));
         $product->save();
         if ($request->hasFile('path')) {
             Product::createPhoto($request->file('path'), $product->id);
         }
-        return response()->json(['message' => 'Товар '.$productId. ' обновлён'])->setStatusCode(200);
+        return response()->json(['message' => 'Товар обновлён'])->setStatusCode(200);
     }
     //Удаление товара
     public function delete(int $productId) {
         $product = Product::where('id', $productId)->first();
         if(!$product) {
-            throw new ApiException(404, 'Не найдено');
+            throw new ApiException(404, 'Товар не найден');
         }
         $product->delete();
-        return response()->json(['message' => 'Товар '.$productId. ' удалён'])->setStatusCode(200);
+        return response()->json(['message' => 'Товар удалён'])->setStatusCode(200);
     }
 
     //Метод просмотра всех товаров
@@ -51,7 +51,7 @@ class  ProductController extends Controller
         $products = Product::with('categories')->get();
 
         if($products->isEmpty()) {
-            throw new ApiException(404, 'Не найдено');
+            throw new ApiException(404, 'Товары не найдены');
         } else {
             // Массив для хранения данных о продуктах с категориями
             $formattedProducts = [];

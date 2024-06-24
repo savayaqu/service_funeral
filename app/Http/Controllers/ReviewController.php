@@ -15,7 +15,7 @@ class ReviewController extends Controller
     public function show(int $id) {
         $reviews = Review::where('product_id', $id)->get();
         if ($reviews->isEmpty()) {
-            throw  new ApiException(404, 'Не найдено');
+            throw  new ApiException(404, 'Отзывы к данному товары отсутствуют');
         }
         $reviewWithUser = [];
 
@@ -39,11 +39,11 @@ class ReviewController extends Controller
             $query->where('product_id', $productId);
         })->first();
         if(!$order) {
-            throw new ApiException(404, 'Не найдено');
+            throw new ApiException(404, 'Вы не можете оставить отзыв на товар, который вы не покупали');
         }
         $existsReview = Review::where('user_id', $user->id)->where('product_id', $productId)->exists();
         if($existsReview) {
-            throw new ApiException(423, 'Заблокировано');
+            throw new ApiException(423, 'Вы уже оставили отзыв на данный товар');
         }
         $review = new Review([
             'rating' => $request->input('rating'),
